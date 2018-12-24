@@ -286,6 +286,18 @@ function install_jenkins() {
 }
 
 #-------------------------------------------------------------------------------
+# Install Nginx
+#-------------------------------------------------------------------------------
+function install_nginx() {
+  yum_install epel-release
+  yum_install nginx
+
+  aws s3 cp s3://30daysdevops/artem/nginx.conf /etc/nginx/nginx.conf
+
+  service nginx start
+}
+
+#-------------------------------------------------------------------------------
 # Install Jenkins.
 #-------------------------------------------------------------------------------
 function main() {
